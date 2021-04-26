@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Анализ текста</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/css_f.css" />
+
+</head>
+<body>
+<div>
+    <form action="/sign_in_user" method="post">
+        <div class="con">
+            <header class="head-form">
+                <h2>Вход</h2>
+                <p>Введите логин и пароль</p>
+            </header>
+            <br>
+            <div class="field-set">
+             <span class="input-item">
+               <i class="fa fa-user-circle"></i>
+             </span>
+                <input class="form-input" type="text" placeholder="телефон" name="login" required>
+                <br>
+                <span class="input-item">
+                    <i class="fa fa-key"></i>
+                </span>
+                <input class="form-input" type="password" placeholder="пароль" name="password" required>
+                <span>
+                    <i class="fa fa-eye" aria-hidden="true" type="button"></i>
+                </span>
+                <br>
+                <p style="color: #f00;">{{status}}</p>
+                <br>
+                <button class="log-in" style="background: #21CDD8">Вход</button>
+                <a href="/sign_up" style="text-align: center;">Зарегистрироваться</a>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

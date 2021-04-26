@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Анализ текста</title>
+    <style>
+        .left {
+            float:left;
+            margin-left: 30px;
+            line-height: 1.5;
+            margin-top: 15px;
+        }
+        .right {
+            float:right;
+            margin-right: 15px;
+            margin-top: 15px;
+        }
+        .inp_text{
+            width: 450px;
+            height: 300px;
+            resize: none;
+            float: left;
+        }
+        button {
+            display: inline-block;
+
+            width: 280px;
+            height: 30px;
+
+            padding: 0 10px;
+            background: #fff;
+            border-radius: 5px;
+
+            outline: none;
+            border: none;
+
+            cursor: pointer;
+            text-align: center;
+
+            letter-spacing: 0.05em;
+            background: #11111;
+        }
+        a:link, a:visited {
+          background-color: #f44336;
+          color: white;
+          width: 80px;
+          height: 26px;
+          border-radius: 5px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<div class="left">
+    <h1>Личный кабинет</h1>
+        <form method="post" action="/analiz" style="margin-left: 20px;">
+            <h2>Результат</h2>
+            <h4>Название текста - "{{ name_text }}"</h4>
+            <details>
+                <summary>Показать текст</summary>
+                <textarea name="text" class="inp_text" readonly>
+{{ text }}
+                </textarea>
+            </details>
+            <br>
+            <label>Количество символов - {{ num_simbol }}</label><br>
+            <label>Количество символов без пробелов - {{ num_simb_without_space }}</label><br>
+            <label>Количество слов  - {{ num_words }}</label><br>
+            <label>Количество существительное - {{ num_noun }}</label><br>
+            <label>Количество глаголов - {{ num_verb }}</label><br>
+            <label>Количество прилагательных - {{ num_adjf }}</label><br>
+            <label>Количество числительных - {{ num_numr }}</label><br>
+            <label>Самое популярное слово - {{ pop_word }}</label><br>
+            <label>Количество появления этого слова - {{ pop_num }}</label><br>
+            <button class="log-in" style="background: #21CDD8">Анализ нового текста</button>
+        </form>
+</div>
+<div class="right">
+    <br>
+    <a href="/sign_out" style="margin-right: 15px; margin-left: 350px;">Выйти</a>
+    <br>
+    <br>
+    <br>
+    <h3 align="left">История</h3>
+    {% for i in data %}
+        <a href="/rez_analiz/{{ i.id }}" style="background-color: #A3A1FF;
+          width: 210px; height: 26px;">
+            {{ i.name_text }}</a><br><br>
+    {% endfor %}
+</div>
+</body>
+</html>
